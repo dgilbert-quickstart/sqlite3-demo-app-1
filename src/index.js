@@ -17,10 +17,16 @@ let db = new sqlite3.Database(_dbname, (err) => {
   console.log('Connected successfully.');
 });
 
+db.all("SELECT * FROM user", [], (err, rows) => {
+    console.log(rows)
+})
+
+/*
 db.get("SELECT * FROM user", [], (err, row) => {
     if (err) {
       throw err; 
     }
     console.log(row);
 });
+*/
 
