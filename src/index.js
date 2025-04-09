@@ -25,8 +25,9 @@ db.all("SELECT * FROM user", [], (err, rows) => {
 
 db.get("SELECT * FROM user", [], (err, row) => {
     if (err) {
-      throw err; 
+        throw err; 
     }
     console.log(row);
 });
+
 
