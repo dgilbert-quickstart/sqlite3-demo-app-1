@@ -10,7 +10,7 @@ let _dbname = "data\dashboard.db"
 //let _dbname = "data/demodb1.db"
 //let _dbname = "data/dashboard.db"
 
-let db = new sqlite3.Database(_dbname, (err) => {
+let db = new sqlite3.Database(_dbname, sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     return console.error(err.message);
   }
