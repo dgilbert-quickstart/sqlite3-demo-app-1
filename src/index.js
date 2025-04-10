@@ -3,7 +3,7 @@
 const sqlite3 = require('sqlite3').verbose();
 
 //windwos or macos or linux 
-//let _dbname = `demodb1.db`
+//let _dbname = `src\\data\\demodb1.db`
 let _dbname = "src\\data\\dashboard.db"
 
 //macos, linux os 
@@ -17,13 +17,19 @@ let db = new sqlite3.Database(_dbname, sqlite3.OPEN_READWRITE, (err) => {
   console.log('Connected successfully.');
 });
 
-/*
+//insert row 
+insert_query = "INSERT INTO user(username, password) VALUES(?, ?)"
+values = ["usersix", "pwd6"]
+//db.run(insert_query, values)
+
+//returns all rows 
 db.all("SELECT * FROM user", [], (err, rows) => {
     console.log(rows)
 })
-*/
 
-db.get("SELECT * FROM user", [], (err, row) => {
+//returns first row
+//db.get("SELECT * FROM user", [], (err, row) => {
+db.get("SELECT * FROM user where username=? and password=?", ["userfour","pwd4"], (err, row) => {
     if (err) {
         throw err; 
     }
