@@ -10,6 +10,7 @@ let _dbname = "src\\data\\dashboard.db"
 //let _dbname = "src/data/demodb1.db"
 //let _dbname = "src/data/dashboard.db"
 
+//connect to db function
 let db = new sqlite3.Database(_dbname, sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     return console.error(err.message);
@@ -17,16 +18,22 @@ let db = new sqlite3.Database(_dbname, sqlite3.OPEN_READWRITE, (err) => {
   console.log('Connected successfully.');
 });
 
+//insert user function 
 //insert row 
 insert_query = "INSERT INTO user(username, password) VALUES(?, ?)"
-values = ["usersix", "pwd6"]
+values = ["usereeight", "pwd8"]
 //db.run(insert_query, values)
 
+//-- log to a file 
+console.log("# row inserted")
+
+//-- create displayAll function -- 
 //returns all rows 
 db.all("SELECT * FROM user", [], (err, rows) => {
     console.log(rows)
 })
 
+//-- create getUser function -- 
 //returns first row
 //db.get("SELECT * FROM user", [], (err, row) => {
 db.get("SELECT * FROM user where username=? and password=?", ["userfour","pwd4"], (err, row) => {
@@ -36,4 +43,10 @@ db.get("SELECT * FROM user where username=? and password=?", ["userfour","pwd4"]
     console.log(row);
 });
 
+
+//-- call functuions
+//-- connecttodb
+//-- inseruser
+//--displayAll
+//--getuser
 
